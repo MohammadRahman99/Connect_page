@@ -1,8 +1,12 @@
 from django.shortcuts import render
-
+from .models import UserInfo
 # Create your views here.
 def home(request):
-    return render(request,'index.html')
+    user_info=UserInfo.objects.all()
+    context = {
+        'user_info':user_info
+        }
+    return render(request,'index.html',context)
 
 def contact(request):
     return render(request,'contact.html')
